@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 3.0//EN" "http://getahead.org/dwr/dwr30.dtd">
+<dwr>
+	<allow>
+		<create creator="spring" javascript="weiboMsg">
+			<param name="beanName" value="messageDwr" />
+			<!-- 要暴露给浏览器的方法 -->
+			<include method="createMessage"/>
+			<include method="createUser"/>
+			<include method="validUser"/>
+			<include method="isLogin"/>
+			<include method="getMessage"/>
+			<include method="getAllMessageByPage"/>
+		</create>
+		
+		<!-- 将MessageBean转换成JavaScript对象 -->
+		<convert match="com.dwrweibo.dwr.bean.MessageBean" converter="bean"></convert>
+		
+		<!-- 将MessageException转换成JavaScript对象 -->
+		<convert match="com.dwrweibo.dwr.exception.MessageException" converter="bean"></convert>
+
+	</allow>
+</dwr>

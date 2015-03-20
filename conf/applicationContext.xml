@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<!-- 导入资源文件 -->
+	<context:property-placeholder location="classpath:db.properties" />
+
+	<!-- 配置C3P0数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<property name="initialPoolSize" value="2"></property>
+		<property name="maxPoolSize" value="200"></property>
+		<property name="minPoolSize" value="2"></property>
+		<property name="maxIdleTime" value="200"></property>
+	</bean>
+
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="mappingLocations" value="classpath:com/dwrweibo/dwr/entities/*.hbm.xml"></property>
+	</bean>
+	
+	<!-- 配置userDao组件 -->
+	<bean id="userDao" class="com.dwrweibo.dwr.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置messageDao组件 -->
+	<bean id="messageDao" class="com.dwrweibo.dwr.dao.impl.MessageDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置messageService组件 -->
+	<bean id="messageService" class="com.dwrweibo.dwr.service.impl.MessageServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+		<property name="messageDao" ref="messageDao"></property>
+	</bean>
+	
+	<!-- 配置Spring的声明式事务 -->
+	<!-- 配置hibernate的事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<!-- 配置事务属性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务切入点，再把事务属性和事务切入点关联起来 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.dwrweibo.dwr.service.impl.*.*(..))" id="myService"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="myService"/>
+		
+		<!-- 将authority转换成切面Bean -->
+		<aop:aspect ref="authority">
+			<!-- 以切面Bean中的authority()方法作为增强处理方法 -->
+			<aop:before method="authority" pointcut="execution(* com.dwrweibo.dwr.authority.*.*(..))"/>
+		</aop:aspect>
+		
+	</aop:config>
+	
+	<!-- 配置权限控制 -->
+	<bean id="authority" class="com.dwrweibo.dwr.authority.AuthorityInterceptor"></bean>
+	
+	<!-- 配置DWR前端处理组件，以暴露给浏览器调用 -->
+	<bean id="messageDwr" class="com.dwrweibo.dwr.dwr.MessageDwr">
+		<property name="messageService" ref="messageService"></property>
+	</bean>
+	
+
+</beans>

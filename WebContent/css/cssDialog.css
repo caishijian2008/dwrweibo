@@ -1,0 +1,29 @@
+/* 设置对话框的CSS样式 */
+.login {
+	background: #e0e0e0;
+	border: 1px solid #909090;
+	padding: 4px;
+	width:250px;
+}
+td{
+	font-size:12pt;
+}
+div{
+	/* font-size:9pt; */
+	align:center;
+}
+input{
+	border:1px solid #888888;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	color: #444466;
+	text-decoration: none;
+}
+a:hover {
+	color: #3333ff;
+	font-weight:bold;
+	text-decoration: none;
+}

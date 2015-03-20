@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0022)http://t.nextsns.com/? -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="keywords"
+		content="EasyTalk微博,php微博系统,微博程序,微博系统,开源微博系统,微博软件">
+		<meta name="description"
+			content="EasyTalk是一款基于PHP的开源免费微博系统，支持手机3G、androd、iphone访问，并且强大的插件应用系统让扩展您的微博网站更加简单。EasyTalk还支持国内各大平台帐号同步登陆，并可和已有网站进行用户整合。">
+			<title>EasyTalk开源微博系统 - Nextsns.com</title>
+			<link
+				href="http://t.nextsns.com/Public/images/favicon.ico?1422438484"
+				rel="Shortcut Icon" type="image/x-icon">
+				<link
+					href="http://t.nextsns.com/Public/images/favicon.ico?1422438484"
+					rel="Bookmark" type="image/x-icon">
+					<link rel="stylesheet" type="text/css"
+						href="./EasyTalk开源微博系统 - Nextsns.com_files/welcome.css">
+						<script type="text/javascript">
+var siteurl="http://t.nextsns.com";
+var pubdir="http://t.nextsns.com/Public";
+</script>
+						<script type="text/javascript"
+							src="./EasyTalk开源微博系统 - Nextsns.com_files/lang.js"></script>
+						<script type="text/javascript"
+							src="./EasyTalk开源微博系统 - Nextsns.com_files/jquery.js"></script>
+						<script type="text/javascript"
+							src="./EasyTalk开源微博系统 - Nextsns.com_files/weibologin.js"></script>
+						<style type="text/css">
+.vip1 {
+	background:
+		url('http://www.nextsns.com/et/Public/images/common/vip.gif')
+		no-repeat right;
+	padding-right: 16px;
+}
+
+.vip2 {
+	background:
+		url('http://www.nextsns.com/et/Public/images/common/vip.gif')
+		no-repeat right;
+	padding-right: 16px;
+}
+</style>
+</head>
+<body class="muilty">
+	<div class="navigation">
+		<ul>
+			<li class="topheader"><a href="http://t.nextsns.com/"
+				class="header"></a></li>
+			<li class="fright"><a
+				href="http://t.nextsns.com/?m=index&a=register">快速注册</a></li>
+			<li class="fright"><a href="http://t.nextsns.com/">登录微博</a></li>
+		</ul>
+	</div>
+	<div class="main">
+		<div class="rightbox">
+			<div class="rightbox_1">
+				<table>
+					<tbody>
+						<tr height="100px" valign="top">
+							<td><a href="http://t.nextsns.com/?m=index&a=register"
+								class="btn-reg">注册微博</a></td>
+						</tr>
+						<tr height="40px">
+							<td valign="top"><div id="logintip"></div> <input
+								tabindex="1" type="text" id="loginname" class="input_text"
+								value="支持微博帐号 / Ucenter帐号" style="width: 185px"
+								onfocus="if($(this).val()==&#39;支持微博帐号 / 邮箱地址&#39; || $(this).val()==&#39;支持微博帐号 / Ucenter帐号&#39;){$(this).val(&#39;&#39;)}"
+								onblur="if($(this).val()==&#39;&#39;){$(this).val(&#39;支持微博帐号 / Ucenter帐号&#39;)}"
+								onkeydown="if(event.keyCode==13 &amp;&amp; $(this).val()!=&#39;&#39;) {$(&#39;#loginpassword&#39;).focus();}"></td>
+						</tr>
+						<tr height="80px">
+							<td valign="top"><input tabindex="2" type="password"
+								id="loginpassword" class="input_text" value="******"
+								maxlength="20" style="width: 185px"
+								onfocus="if($(this).val()==&#39;******&#39;){$(this).val(&#39;&#39;)}"
+								onkeydown="if(event.keyCode==13 &amp;&amp; $(this).val()!=&#39;&#39;) {dologin();}"><div
+										style="margin-top: 15px">
+										<label class="label_check" for="rememberMe"><input
+											tabindex="3" type="checkbox" id="rememberMe" value="on"
+											class="checkbox">&nbsp;&nbsp;下次自动登录&nbsp;&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=index&a=reset" id="forgot">忘记密码</a></label>
+									</div></td>
+						</tr>
+						<tr height="30px">
+							<td align="center"><p>
+									<input tabindex="4" type="button" class="button1" value="立即登录"
+										onclick="dologin();">
+								</p>
+								<div id="weibologin">
+									<div style="margin-top: 10px">
+										<a
+											href="https://api.weibo.com/oauth2/authorize?client_id=1405649701&redirect_uri=http%3A%2F%2Ft.nextsns.com%2F%3Fm%3Dapi%26a%3Dsinaweibo_login&response_type=code"><img
+											src="./EasyTalk开源微博系统 - Nextsns.com_files/sinaweibo.png"></a>&nbsp;&nbsp;<a
+											href="http://open.t.qq.com/cgi-bin/authorize?oauth_token="><img
+											src="./EasyTalk开源微博系统 - Nextsns.com_files/qqweibo.png"></a>&nbsp;&nbsp;<a
+											href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=100313212&redirect_uri=http%3A%2F%2Ft.nextsns.com%2F%3Fm%3Dapi%26a%3Dqzone_login&state=a728a4bbce80416183c7388e7cfad94f&scope=get_user_info"><img
+											src="./EasyTalk开源微博系统 - Nextsns.com_files/qzone.png"></a>&nbsp;&nbsp;<a
+											href="https://graph.renren.com/oauth/authorize?client_id=7540b9618a6d45fc972c2936348e9248&redirect_uri=http%3A%2F%2Ft.nextsns.com%2F%3Fm%3Dapi%26a%3Drenren_login&response_type=code"><img
+											src="./EasyTalk开源微博系统 - Nextsns.com_files/renren.png"></a>&nbsp;&nbsp;<a
+											href="https://www.douban.com/service/auth2/auth?client_id=015259f23727100303f70dd6a5753009&redirect_uri=http%3A%2F%2Ft.nextsns.com%2F%3Fm%3Dapi%26a%3Ddouban_login&response_type=code"><img
+											src="./EasyTalk开源微博系统 - Nextsns.com_files/douban.png"></a>&nbsp;&nbsp;
+									</div>
+								</div> <span class="hook" id="index_login_btn"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="rightbox_2">
+				<p>
+					<img src="./EasyTalk开源微博系统 - Nextsns.com_files/righttitbg.gif">
+				</p>
+				<ul class="followtop">
+					<li><em class="num1 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?hjoeson">HJoeson</a><span>5137</span></li>
+					<li><em class="num2 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?%E5%AD%A4%E7%97%95">孤痕</a><span>4976</span></li>
+					<li><em class="num3 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?sushehao">小胡老师</a><span>4864</span></li>
+					<li><em class="num4 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?conan">柯小南</a><span>4694</span></li>
+					<li><em class="num5 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft"
+						href="http://t.nextsns.com/?%E7%89%A7%E7%8B%BC%E4%BA%BA">牧狼人</a><span>4661</span></li>
+					<li><em class="num6 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?lsh1996">海绵宝宝</a><span>4582</span></li>
+					<li><em class="num7 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?rex">海盗</a><span>4579</span></li>
+					<li><em class="num8 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft"
+						href="http://t.nextsns.com/?%E5%8E%A6%E9%97%A8%E5%BE%AE%E5%8D%9A">厦门微博</a><span>4561</span></li>
+					<li><em class="num9 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?loujunxj">loujunxj</a><span>4554</span></li>
+					<li><em class="num10 fleft">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</em><a
+						class="fleft" href="http://t.nextsns.com/?%E6%9D%91%E9%95%BF707">村长707</a><span>4550</span></li>
+				</ul>
+				<p style="margin-top: 20px">
+					<img src="./EasyTalk开源微博系统 - Nextsns.com_files/phone.png">&nbsp;&nbsp;如何用手机上微博
+
+
+
+					
+				</p>
+				<p style="text-indent: 24px">http://t.nextsns.com/wap.php</p>
+			</div>
+		</div>
+		<div class="weltop clearfix">
+			<div class="loginbanner"></div>
+			<div class="hottopic">
+				<ul style="width: 714px;">
+					<li style="margin-left: -5px;">x2.1更新日志</li>
+					<li>x2.3更新预告</li>
+					<li>x2.2.2更新预告</li>
+					<li>新人报道</li>
+					<li>意见反馈</li>
+					<li>热门话题</li>
+					<li>X2.1反馈</li>
+					<li>X2.2反馈</li>
+					<li>X1.8更新预告</li>
+					<li>x2.2更新日志</li>
+				</ul>
+			</div>
+		</div>
+		<div class="welbody">
+			<div class="hotuser">
+				<div class="hotuserico">TA们正在使用</div>
+				<div class="userlist">
+					<ul>
+						<li><a href="http://t.nextsns.com/?ceshis"><img
+								alt="ceshis"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar.php"><span>ceshis</span></a></li>
+						<li><a href="http://t.nextsns.com/?ttplayer"><img
+								alt="ttplayer"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(1).php"><span>ttplayer</span></a></li>
+						<li><a href="http://t.nextsns.com/?doogie"><img
+								alt="doogie"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(2).php"><span>doogie</span></a></li>
+						<li><a href="http://t.nextsns.com/?hljzzj"><img
+								alt="hljzzj"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(3).php"><span>hljzzj</span></a></li>
+						<li><a
+							href="http://t.nextsns.com/?%E5%BA%9E%E5%B0%BC%E7%8E%9B"><img
+								alt="庞尼玛"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(4).php"><span>庞尼玛</span></a></li>
+						<li><a href="http://t.nextsns.com/?xiami121"><img
+								alt="xiami121"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(5).php"><span>xiami121</span></a></li>
+						<li><a href="http://t.nextsns.com/?3324533"><img
+								alt="3324533"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(6).php"><span>3324533</span></a></li>
+						<li><a href="http://t.nextsns.com/?xmwtywbkk"><img
+								alt="xmwtywbkk"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(7).php"><span>xmwtywbkk</span></a></li>
+						<li><a href="http://t.nextsns.com/?gaode"><img
+								alt="gaode"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(8).php"><span>gaode</span></a></li>
+						<li><a href="http://t.nextsns.com/?brook113"><img
+								alt="brook113"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(9).php"><span>brook113</span></a></li>
+						<li><a href="http://t.nextsns.com/?fxcyh"><img alt="车友之家"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(10).php"><span>车友之家</span></a></li>
+						<li><a href="http://t.nextsns.com/?fuzhenhua"><img
+								alt="fuzhenhua"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(11).php"><span>fuzhenhua</span></a></li>
+					</ul>
+				</div>
+				<div class="clearline"></div>
+				<div class="hotuserico" style="margin-top: 5px">有趣的人</div>
+				<div class="userlist">
+					<ul>
+						<li><a href="http://t.nextsns.com/?hjoeson"><img
+								alt="HJoeson"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(12).php"><span>HJoeson</span></a></li>
+						<li><a href="http://t.nextsns.com/?%E5%AD%A4%E7%97%95"><img
+								alt="孤痕"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(13).php"><span>孤痕</span></a></li>
+						<li><a href="http://t.nextsns.com/?sushehao"><img
+								alt="小胡老师"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(14).php"><span>小胡老师</span></a></li>
+						<li><a href="http://t.nextsns.com/?conan"><img alt="柯小南"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(15).php"><span>柯小南</span></a></li>
+						<li><a
+							href="http://t.nextsns.com/?%E7%89%A7%E7%8B%BC%E4%BA%BA"><img
+								alt="牧狼人"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(16).php"><span>牧狼人</span></a></li>
+						<li><a href="http://t.nextsns.com/?lsh1996"><img
+								alt="海绵宝宝"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(17).php"><span>海绵宝宝</span></a></li>
+						<li><a href="http://t.nextsns.com/?rex"><img alt="海盗"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(18).php"><span>海盗</span></a></li>
+						<li><a
+							href="http://t.nextsns.com/?%E5%8E%A6%E9%97%A8%E5%BE%AE%E5%8D%9A"><img
+								alt="厦门微博"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(19).php"><span>厦门微博</span></a></li>
+						<li><a href="http://t.nextsns.com/?loujunxj"><img
+								alt="loujunxj"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(20).php"><span>loujunxj</span></a></li>
+						<li><a href="http://t.nextsns.com/?%E6%9D%91%E9%95%BF707"><img
+								alt="村长707"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(21).php"><span>村长707</span></a></li>
+						<li><a href="http://t.nextsns.com/?bydoo"><img alt="刚哥"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(22).php"><span>刚哥</span></a></li>
+						<li><a href="http://t.nextsns.com/?bestlaoli"><img
+								alt="bestlaoli"
+								src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(23).php"><span>bestlaoli</span></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="hottalk">
+				<div class="theysay">他们正在说：</div>
+				<div class="marqueegb">
+					<ul>
+						<li style="display: none"><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?gaode"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(8).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?gaode"
+												class="">gaode</a>&nbsp;&nbsp;<img class="emo"
+												src="./EasyTalk开源微博系统 - Nextsns.com_files/48.gif"
+												alt="%28%E9%A1%B6%29">牛逼啊 这程序
+													<div class="sp">03月10日 15:35&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?brook113"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(9).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?brook113" class="">brook113</a>&nbsp;&nbsp;朋友们，我是一位老师，代理互联网广告宣传！网站推广，网站制作等，欢迎朋友交流互动合作！QQ764352457
+												<div class="sp">03月07日 11:23&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?fxcyh"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(10).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?fxcyh"
+												class="">车友之家</a>&nbsp;&nbsp;<img class="emo"
+												src="./EasyTalk开源微博系统 - Nextsns.com_files/46.gif"
+												alt="%28%E5%AF%92%29"><div class="sp">03月07日
+														09:46&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?fxcyh"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(10).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?fxcyh"
+												class="">车友之家</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<p>
+													<a title="查看原图"
+														href="http://t.nextsns.com/Public/attachments/photo/20150307/1425692652.png"
+														target="_blank"><img
+														src="./EasyTalk开源微博系统 - Nextsns.com_files/s_1425692652.png"
+														onerror="this.src=&quot;http://t.nextsns.com/Public/images/common/nopic.jpg&quot;"></a>
+												</p>
+												<div class="sp">03月07日 09:44&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?fuzhenhua"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(11).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?fuzhenhua" class="">fuzhenhua</a>&nbsp;&nbsp;大家好
+												<div class="sp">03月06日 22:08&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(24).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123" class="">qazwsx123</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<div class="sp">03月06日 16:45&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(24).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123" class="">qazwsx123</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E5%88%86%E4%BA%AB%E5%9B%BE%E7%89%87"
+												target="_blank">#分享图片#</a>
+												<p>
+													<a title="查看原图"
+														href="http://t.nextsns.com/Public/attachments/photo/20150306/1425631583.jpg"
+														target="_blank"><img
+														src="./EasyTalk开源微博系统 - Nextsns.com_files/s_1425631583.jpg"
+														onerror="this.src=&quot;http://t.nextsns.com/Public/images/common/nopic.jpg&quot;"></a>
+												</p>
+												<div class="sp">03月06日 16:46&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(24).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?qazwsx123" class="">qazwsx123</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E5%88%86%E4%BA%AB%E5%9B%BE%E7%89%87"
+												target="_blank">#分享图片#</a>
+												<p>
+													<a title="查看原图"
+														href="http://t.nextsns.com/Public/attachments/photo/20150306/1425631741.jpg"
+														target="_blank"><img
+														src="./EasyTalk开源微博系统 - Nextsns.com_files/s_1425631741.jpg"
+														onerror="this.src=&quot;http://t.nextsns.com/Public/images/common/nopic.jpg&quot;"></a>
+												</p>
+												<div class="sp">03月06日 16:49&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?ceshis"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar.php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?ceshis"
+												class="">ceshis</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<div class="sp">11小时前&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?ttplayer"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(1).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?ttplayer" class="">ttplayer</a>&nbsp;&nbsp;<img
+												class="emo"
+												src="./EasyTalk开源微博系统 - Nextsns.com_files/47.gif"
+												alt="%28%E8%B0%A2%E8%B0%A2%29"><div class="sp">18小时前&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?doogie"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(2).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?doogie"
+												class="">doogie</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88"
+												target="_blank">#意见反馈#</a>为什么安装完没看到wap.php入口文件
+												<div class="sp">
+													03月15日 10:19&nbsp;&nbsp;通过<a
+														href="http://t.nextsns.com/?m=topic&a=index"
+														target="_blank">微话题</a>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?doogie"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(2).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?doogie"
+												class="">doogie</a>&nbsp;&nbsp;这么酷的应用怎么没发现呀
+												<div class="sp">
+													03月15日 09:27&nbsp;&nbsp;通过<a
+														href="http://t.nextsns.com/?m=app&a=api&appname=wap"
+														target="_blank">手机微博</a>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?hljzzj"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(3).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?hljzzj"
+												class="">hljzzj</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E5%88%86%E4%BA%AB%E5%9B%BE%E7%89%87"
+												target="_blank">#分享图片#</a>
+												<p>
+													<a title="查看原图"
+														href="http://t.nextsns.com/Public/attachments/photo/20150314/1426326020.jpg"
+														target="_blank"><img
+														src="./EasyTalk开源微博系统 - Nextsns.com_files/s_1426326020.jpg"
+														onerror="this.src=&quot;http://t.nextsns.com/Public/images/common/nopic.jpg&quot;"></a>
+												</p>
+												<div class="sp">03月14日 17:40&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?hljzzj"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(3).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?hljzzj"
+												class="">hljzzj</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<div class="sp">03月14日 17:39&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?%E5%BA%9E%E5%B0%BC%E7%8E%9B"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(4).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?%E5%BA%9E%E5%B0%BC%E7%8E%9B"
+												class="">庞尼玛</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<div class="sp">03月13日 20:26&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?xiami121"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(5).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?xiami121" class="">xiami121</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+												<div class="sp">03月12日 17:46&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?3324533"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(6).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?3324533"
+												class="">3324533</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E7%83%AD%E9%97%A8%E8%AF%9D%E9%A2%98"
+												target="_blank">#热门话题#</a><a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%84%8F%E8%A7%81%E5%8F%8D%E9%A6%88"
+												target="_blank">#意见反馈#</a>
+												<div class="sp">03月11日 21:18&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?3324533"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(6).php"
+													class="avatar"></a></td>
+											<td valign="top"><a href="http://t.nextsns.com/?3324533"
+												class="">3324533</a>&nbsp;&nbsp;<img class="emo"
+												src="./EasyTalk开源微博系统 - Nextsns.com_files/34.gif"
+												alt="%28%E9%85%B7%29"><a
+													href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+													target="_blank">#新人报到#</a>大家好，我是新加入的成员欢迎大家来收听！
+													<p>
+														<a title="查看原图"
+															href="http://t.nextsns.com/Public/attachments/photo/20150311/1426078396.jpg"
+															target="_blank"><img
+															src="./EasyTalk开源微博系统 - Nextsns.com_files/s_1426078396.jpg"
+															onerror="this.src=&quot;http://t.nextsns.com/Public/images/common/nopic.jpg&quot;"></a>
+													</p>
+													<div class="sp">03月11日 20:53&nbsp;&nbsp;通过网页</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?xmwtywbkk"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(7).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?xmwtywbkk" class="">xmwtywbkk</a>&nbsp;&nbsp;wqe
+												<p>
+													<a href="http://t.cn/RwrqTo3" target="_blank"><img
+														style="background: url(http://g3.ykimg.com/0100641F4654FFF4B20FC806257BB6104192EB-73EC-E9B4-EB3F-889C7555FB4D) no-repeat;"
+														class="mediaimg"
+														src="./EasyTalk开源微博系统 - Nextsns.com_files/videoplay.png"
+														alt="点击播放"></a>
+												</p>
+												<div class="sp">
+													03月11日 16:35&nbsp;&nbsp;通过<a
+														href="http://t.nextsns.com/?m=topic&a=index"
+														target="_blank">微话题</a>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+						<li><div class="indexgbli">
+								<table border="0" width="100%">
+									<tbody>
+										<tr>
+											<td width="60px" valign="top"><a
+												href="http://t.nextsns.com/?xmwtywbkk"><img
+													src="./EasyTalk开源微博系统 - Nextsns.com_files/avatar(7).php"
+													class="avatar"></a></td>
+											<td valign="top"><a
+												href="http://t.nextsns.com/?xmwtywbkk" class="">xmwtywbkk</a>&nbsp;&nbsp;<a
+												href="http://t.nextsns.com/?m=topic&a=topic&keyword=%E6%96%B0%E4%BA%BA%E6%8A%A5%E5%88%B0"
+												target="_blank">#新人报到#</a> <a href="http://t.cn/Rwr456r"
+												target="_blank"
+												title="http://v.qq.com/cover/8/8tqgo5g5ryqcv0f.html?vid=r0016xb7ubi">http://t.cn/Rwr456r</a>
+												<div class="sp">
+													03月11日 16:34&nbsp;&nbsp;通过<a
+														href="http://t.nextsns.com/?m=topic&a=index"
+														target="_blank">微话题</a>
+												</div></td>
+										</tr>
+									</tbody>
+								</table>
+							</div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="welbottom"></div>
+		<script type="text/javascript">
+$(document).ready(function(){
+    //talk
+    if ($(".marqueegb ul li").length>3) {
+        var firstli;
+        var tksi;
+        firstli=$(".marqueegb ul li").first();
+        firstli.before("<li>"+$(".marqueegb ul li").last().html()+"</li>");
+        $(".marqueegb ul li").last().remove();
+        firstli.before("<li>"+$(".marqueegb ul li").last().html()+"</li>");
+        $(".marqueegb ul li").last().remove();
+        firstli.before("<li>"+$(".marqueegb ul li").last().html()+"</li>");
+        $(".marqueegb ul li").last().remove();
+        function tkscroll() {
+            tksi=setInterval(function(){
+                firstli=$(".marqueegb ul li").first();
+                $(".marqueegb ul li").first().slideDown(1000);
+                firstli.before("<li style='display:none'>"+$(".marqueegb ul li").last().html()+"</li>");
+                $(".marqueegb ul li").last().remove();
+            }, 4000);
+        }
+        $("a").focus(function(){this.blur()});
+        $('.marqueegb').mouseover(function(){clearInterval(tksi)});
+        $('.marqueegb').mouseout(function(){tkscroll()});
+        tkscroll();
+    }
+    //topic
+    var topiculw=0;
+    var l=0;
+    var firstl12;
+    var tpsi;
+    $('.hottopic ul li').each(function(){
+        topiculw=topiculw+$(this).width()+10;
+    });
+    $('.hottopic ul').width(topiculw+'px');
+    function tpscroll() {
+        tpsi=setInterval(function(){
+            l=l+1;
+            firstl12=$('.hottopic ul li').first();
+            firstl12.css('margin-left',-l);
+            if (l==firstl12.width()+10) {
+                $('.hottopic ul').append(firstl12);
+                $('.hottopic ul li').last().removeAttr('style');
+                l=0;
+            }
+        },50);
+    }
+    if (topiculw>=530) {
+        $('.hottopic').mouseover(function(){clearInterval(tpsi)});
+        $('.hottopic').mouseout(function(){tpscroll()});
+        tpscroll();
+    }
+});
+</script>
+		<div id="indexbottom">
+			Powered by <a href="http://www.nextsns.com/" target="_blank">EasyTalk
+				X2.5</a>&nbsp;&nbsp;©2009-2013 <a href="http://www.nextsns.com/"
+				target="_blank">Nextsns.com</a>&nbsp;&nbsp;&nbsp;<a
+				href="http://t.nextsns.com/">EasyTalk开源微博系统</a>&nbsp;<a
+				href="http://www.miibeian.gov.cn/" target="_blank">苏ICP备13008899号</a>&nbsp;
+			<script src="./EasyTalk开源微博系统 - Nextsns.com_files/stat.php"
+				language="JavaScript"></script>
+			<script src="./EasyTalk开源微博系统 - Nextsns.com_files/core.php"
+				charset="utf-8" type="text/javascript"></script>
+			<a href="http://www.cnzz.com/stat/website.php?web_id=2926394"
+				target="_blank" title="站长统计"><img border="0" hspace="0"
+				vspace="0" src="./EasyTalk开源微博系统 - Nextsns.com_files/pic.gif"></a>
+		</div>
+	</div>
+	<div class="sogoutip"
+		style="z-index: 2147483645; visibility: hidden; display: none;"></div>
+	<div class="sogoubottom" id="sougou_bottom" style="display: none;"></div>
+	<div id="ext_stophi" style="z-index: 2147483647;">
+		<div class="extnoticebg"></div>
+		<div class="extnotice">
+			<h2>
+				关闭提示 <a href="http://t.nextsns.com/?#" title="关闭提示" id="closenotice"
+					class="closenotice">关闭</a>
+			</h2>
+			<p id="sogouconfirmtxt"></p>
+			<a id="sogouconfirm" href="http://t.nextsns.com/?#"
+				class="extconfirm">确 认</a> <a id="sogoucancel"
+				href="http://t.nextsns.com/?#" class="extconfirm">取 消</a>
+		</div>
+	</div>
+	<div id="ext_overlay" class="ext_overlayBG"
+		style="display: none; z-index: 2147483646;"></div>
+	<iframe class="sogou_sugg_feedbackquan" frameborder="0" scrolling="no"
+		src="./EasyTalk开源微博系统 - Nextsns.com_files/yun4.htm"
+		style="border: none; display: none; z-index: 2147483645; background: transparent;"></iframe>
+	<div class="rec-mini" id="id_div_close"
+		style="display: none; z-index: 2147483645; width: 53px; height: 53px; position: fixed; right: 7px; bottom: 7px; cursor: pointer; background: url(http://ht.www.sogou.com/images/mini.png) no-repeat;"></div>
+	<script src="./EasyTalk开源微博系统 - Nextsns.com_files/pv.gif"></script>
+</body>
+</html>
