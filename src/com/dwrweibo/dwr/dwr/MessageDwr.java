@@ -31,21 +31,23 @@ public class MessageDwr {
 	}
 	
 	//创建一个用户
-	public int createUser(String username, String password, String email, HttpSession session) throws MessageException {
+	public int createUser(String username, String password, String email, String level, HttpSession session) throws MessageException {
 		User user = new User();
 		user.setUserName(username);
 		user.setUserPassword(password);
 		user.setUserEmail(email);
+		user.setUserLevel(level);
 		int userId = messageService.createUser(user);
 		session.setAttribute("userId", userId);
 		return userId;
 	}
 	
 	//验证用户
-	public int validUser(String username, String password, HttpSession session) throws MessageException {
+	public int validUser(String username, String password, String level, HttpSession session) throws MessageException {
 		User user = new User();
 		user.setUserName(username);
 		user.setUserPassword(password);
+		user.setUserLevel(level);
 		int userId = messageService.validateLogin(user);
 		if(userId > 0) {
 			session.setAttribute("userId", userId);

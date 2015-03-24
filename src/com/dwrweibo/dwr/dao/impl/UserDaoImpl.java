@@ -23,11 +23,11 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
 	}
 
 	/**
-	 * 根据用户名和密码查找用户
+	 * 根据用户名,密码和级别查找用户
 	 */
 	@Override
-	public User findByNameAndPass(String name, String pass) {
-		List ls = find("select u from User u where u.userName = ?0 and u.userPassword = ?1", name, pass);
+	public User findByNameAndPass(String name, String pass, String level) {
+		List ls = find("select u from User u where u.userName = ?0 and u.userPassword = ?1 and u.userLevel = ?2", name, pass, level);
 		if(ls != null && ls.size() > 0) {
 			return (User) ls.get(0);
 		}

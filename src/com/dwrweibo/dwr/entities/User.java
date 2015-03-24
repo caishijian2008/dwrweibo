@@ -12,18 +12,21 @@ public class User {
 	private String userPassword;
 	//邮箱
 	private String userEmail;
+	//级别：管理员为0，普通用户为1
+	private String userLevel;
+	
 	private Set<Message> messages = new HashSet<>();
 	
 	public User() {
 	}
 
 	public User(Integer id, String userName, String userPassword,
-			String userEmail, Set<Message> messages) {
+			String userLevel, Set<Message> messages) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.userPassword = userPassword;
-		this.userEmail = userEmail;
+		this.userLevel = userLevel;
 		this.messages = messages;
 	}
 
@@ -57,6 +60,14 @@ public class User {
 
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
+	}
+
+	public String getUserLevel() {
+		return userLevel;
+	}
+
+	public void setUserLevel(String userLevel) {
+		this.userLevel = userLevel;
 	}
 
 	public Set<Message> getMessages() {

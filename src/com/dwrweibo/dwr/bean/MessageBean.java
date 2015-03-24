@@ -2,18 +2,26 @@ package com.dwrweibo.dwr.bean;
 
 public class MessageBean {
 
-	// 消息id
+	// 微博id
 	private int id;
-	// 消息内容
+	// 微博内容
 	private String content;
-	// 消息发布者id
+	// 微博发布者id
 	private int ownerId;
-	// 消息发布者名字
+	// 微博发布者名字
 	private String ownerName;
 
 	public MessageBean() {
 	}
 
+	/**
+	 * MessageBean 构造函数
+	 * 
+	 * @param id 微博id
+	 * @param content 微博内容
+	 * @param ownerId 微博发布者id
+	 * @param ownerName 微博发布者名字
+	 */
 	public MessageBean(int id, String content, int ownerId, String ownerName) {
 		super();
 		this.id = id;

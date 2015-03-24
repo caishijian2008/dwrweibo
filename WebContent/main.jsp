@@ -1,34 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<script type='text/javascript' src='$(pageContext.request.contextPath)/dwr/engine.js'></script>
+<script type='text/javascript' src='/dwrweibo/dwr/engine.js'></script>
 <script type='text/javascript' src='/dwrweibo/dwr/util.js'></script>
 <script type='text/javascript' src='/dwrweibo/dwr/interface/weiboMsg.js'></script>
 <script type='text/javascript' src='./js/jquery-1.8.3.js'></script>
-<script type='text/javascript' src='./js/sendmsg.js'></script>
+<script type='text/javascript' src='./js/main.js'></script>
 <script type='text/javascript' src='./js/postcount.js'></script>
 
 <title>...欢迎...</title>
-<link href="./css/thrColLiqHdr.css" rel="stylesheet" type="text/css" />
+<link href="./css/main.css" rel="stylesheet" type="text/css" />
 <!-- <link href="./css/cssDialog.css" rel="stylesheet" type="text/css" /> -->
 <link type="text/css" rel="stylesheet" href="./css/postcount.css" />
 
 </head>
-<body onload="init();">
+<body onload="init();" background="./images/bg.jpg">
 	<div class="container">
 		<div class="header">
 			<%-- <%@ include file="./client/header.jsp"%> --%>
-			<jsp:include page="./client/header.jsp" />
+			<jsp:include page="./user/header.jsp" />
 		</div>
 		<div class="sidebar1">
-			<%@ include file="./client/sidebar1.jsp"%>
+			<ul class="nav">
+		      <li><a href="#">首页</a></li>
+		      <li><a href="#">链接二</a></li>
+		      <li><a href="#">链接三</a></li>
+		      <li><a href="#">链接四</a></li>
+			</ul>
+		<!-- end .sidebar1 -->
 		</div>
 		<div class="content">
+		
 		<!-- 显示字数 -->
 		<div class="area">
 			<div class="box01-num">
@@ -37,30 +43,31 @@
 					还可以输入<b class="num">140</b>字
 				</p>
 			</div>
-		<!-- 发消息用的对话框 -->
-		<div id="post" class="dialog">
-		<table border="1" align="center">
+		<!-- 发微博对话框 -->
+		<div id="post" class="send" >
+		<table border="1" align="left">
 			<tr>
 				<td>
 					<div class="inputarea">
-						<textarea id="content" class="checkTextarea" cols="50" rows="8" style="height: 82px; width: 431px"></textarea>
+						<textarea id="content" class="checkTextarea" cols="50" rows="8"></textarea>
 					</div>
 				</td>
 			</tr>
 			<tr>
 			<td colspan="2" align="right">
-				<input type="button" id="hider2" value="发布"
+				<span id="err" style="font-size: 10; color:red; "></span>
+				<input type="button" id="postbtn" value="发布"
 					onclick="addMsg();"/>
-				<!-- <input type="button" id="hider3" value="取消" 
-					onclick="$('post').style.display='none';"/> -->
 			</td>
 			</tr>
 		</table>
 		</div>
 		</div>
-		
 		<hr />
-		<table width="450" border="1"  align="center">
+		
+		<!-- 显示微博 -->
+		<div id="view" class="view" align="center">
+		<table width="450" border="1">
 		  <caption>即时消息系统</caption>
 		  <tbody>
 		  <tr>
@@ -73,6 +80,9 @@
 		  </tr>
 		  </tbody>
 		</table>
+		</div>
+		
+		<!-- 翻页 -->
 		<table width="450" border="1" align="center">
 			<tr>
 				<td align="right">
@@ -84,11 +94,16 @@
 		
 		<hr>
 		</div><!-- end .content -->
+		
 		<div class="sidebar2">
-			<%@ include file="./client/sidebar2.jsp"%>
+			<h4>背景</h4>
+		    <p>本质上，所有 div 中的背景颜色将仅显示与内容一样的长度。如果您希望采用分隔线（而不是颜色），
+		    请在 .content div 的侧面放置边框（但仅当其将始终包含更多内容时）。</p>
+    	<!-- end .sidebar2 -->
 		</div>
+		
 		<div class="footer">
-			<%@ include file="./client/footer.jsp"%>
+			<%@ include file="./user/footer.jsp"%>
 		</div>
 		<!-- end .container -->
 	</div>

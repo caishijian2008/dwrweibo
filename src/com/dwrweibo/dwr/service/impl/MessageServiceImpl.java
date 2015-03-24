@@ -25,29 +25,7 @@ public class MessageServiceImpl implements MessageService {
 		this.messageDao = messageDao;
 	}
 
-	/**
-	 * 创建一条微博
-	 * @param message 新创建的微博
-	 * @param userId 创建消息的用户id
-	 * 
-	 * @return 新创建微博的主键，如果创建失败则返回-1
-	 */
-	@Override
-	public int createMessage(Message message, int userId) {
-
-		try {
-			User user = userDao.get(User.class, userId);
-			if (user != null) {
-				message.setUser(user);
-				return (Integer) messageDao.save(message);
-			}
-			return -1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new MessageException("添加微博异常！！");
-		}
-	}
-
+	
 	/**
 	 * 创建一个用户
 	 * @param user 新创建的用户
@@ -75,7 +53,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public int validateLogin(User user) {
 		try {
-			User u = userDao.findByNameAndPass(user.getUserName(), user.getUserPassword());
+			User u = userDao.findByNameAndPass(user.getUserName(), user.getUserPassword(), user.getUserLevel());
 			if(u != null) {
 				return u.getId();
 			}
@@ -85,6 +63,30 @@ public class MessageServiceImpl implements MessageService {
 		}
 		return -1;
 	}
+	
+	/**
+	 * 创建一条微博
+	 * @param message 新创建的微博
+	 * @param userId 创建消息的用户id
+	 * 
+	 * @return 新创建微博的主键，如果创建失败则返回-1
+	 */
+	@Override
+	public int createMessage(Message message, int userId) {
+
+		try {
+			User user = userDao.get(User.class, userId);
+			if (user != null) {
+				message.setUser(user);
+				return (Integer) messageDao.save(message);
+			}
+			return -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new MessageException("添加微博异常！！");
+		}
+	}
+
 
 	/**
 	 * 根据微博id返回微博

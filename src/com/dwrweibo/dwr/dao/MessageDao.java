@@ -15,5 +15,5 @@ public interface MessageDao extends BaseDao<Message>{
 	 * @param pageNo
 	 * @return 查询到的消息集合
 	 */
-	List<Message> findAllByPage(int pageNo);
+	public List<Message> findAllByPage(int pageNo);
 }

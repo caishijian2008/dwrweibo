@@ -11,7 +11,15 @@
 
 	<!-- 导入资源文件 -->
 	<context:property-placeholder location="classpath:db.properties" />
-
+	
+	<!-- 配置要扫描的包和要排除的注解 -->
+	<context:component-scan base-package="com.dwrweibo.dwr">
+		<context:exclude-filter type="annotation" 
+			expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" 
+			expression="org.springframework.web.bind.annotation.ControllerAdvice"/><!-- springmvc处理异常 -->
+	</context:component-scan>
+	
 	<!-- 配置C3P0数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
@@ -70,7 +78,7 @@
 		
 		<!-- 将authority转换成切面Bean -->
 		<aop:aspect ref="authority">
-			<!-- 以切面Bean中的authority()方法作为增强处理方法 -->
+			<!-- 以切面Bean中的authority()方法作为前置增强处理方法 -->
 			<aop:before method="authority" pointcut="execution(* com.dwrweibo.dwr.authority.*.*(..))"/>
 		</aop:aspect>
 		

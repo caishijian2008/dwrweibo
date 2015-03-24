@@ -11,14 +11,15 @@ public interface UserDao extends BaseDao<User>{
 	 * @param name
 	 * @return 查找到的用户
 	 */
-	User findByName(String name);
+	public User findByName(String name);
 
 	/**
-	 * 根据用户名和密码查找用户
+	 * 根据用户名,密码和级别查找用户
 	 * 
 	 * @param name
 	 * @param pass
+	 * @param level
 	 * @return 查找到的用户
 	 */
-	User findByNameAndPass(String name, String pass);
+	public User findByNameAndPass(String name, String pass, String level);
 }

@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Hibernate映射文件的根元素 -->
-<hibernate-mapping package="com.dwrweibo.dwr.entities">
-    <!-- 每个class元素映射一个持久化类 -->
-    <class name="User" table="USER">
-        <!-- 映射标识属性 -->
+<hibernate-mapping>
+<!-- 每个class元素映射一个持久化类 -->
+    <class name="com.dwrweibo.dwr.entities.User" table="USER">
+    	<!-- 映射标识属性 -->
         <id name="id" type="java.lang.Integer">
             <column name="user_id" />
             <!-- 指定主键生成器策略 -->
@@ -25,13 +25,16 @@
             <column name="user_email" />
         </property>
         
+        <property name="userLevel" type="java.lang.String">
+            <column name="user_level" />
+        </property>
+        
         <!-- 映射1-N关联 -->
         <set name="messages" table="MESSAGE" inverse="true">
             <key>
                 <column name="owner_id" />
             </key>
-            <one-to-many class="Message" />
+            <one-to-many class="com.dwrweibo.dwr.entities.Message" />
         </set>
-        
     </class>
 </hibernate-mapping>
